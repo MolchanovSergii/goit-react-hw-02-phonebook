@@ -1,4 +1,4 @@
-// import React, { Component } from 'react';
+import React from 'react';
 
 const ContactList = ({ dataUsers }) => {
   return (
@@ -7,6 +7,7 @@ const ContactList = ({ dataUsers }) => {
         {dataUsers.map(dataUser => (
           <li key={dataUser.id}>
             {dataUser.name} : {dataUser.number}
+            <button>Delete</button>
           </li>
         ))}
       </ul>
