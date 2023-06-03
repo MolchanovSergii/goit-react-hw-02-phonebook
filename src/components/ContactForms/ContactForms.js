@@ -25,11 +25,11 @@ class ContactForms extends Component {
     this.reset();
   };
 
-  uniqueId = nanoid();
+  uniqueId1 = nanoid();
 
   render() {
     return (
-      <form onSubmit={this.handleSubmitForm}>
+      <form className="forms" onSubmit={this.handleSubmitForm}>
         <label htmlFor={this.uniqueId}>
           Name
           <input

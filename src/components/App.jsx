@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import '../index.css';
 import ContactForms from './ContactForms/ContactForms';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
@@ -51,14 +52,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Phonebook</h1>
-        <ContactForms onSubmit={this.formSubmitData} />
-        <h2>Contacts</h2>
-        <Filter value={this.state.filter} onChange={this.changeFilterData} />
-        <ContactList
-          dataUsers={this.renderFilterContacts()}
-          deleteContact={this.deleteContact}
-        />
+        <div className="wrapper">
+          <h1>Phonebook</h1>
+          <ContactForms onSubmit={this.formSubmitData} />
+          <h2>Contacts</h2>
+          <Filter value={this.state.filter} onChange={this.changeFilterData} />
+          <ContactList
+            dataUsers={this.renderFilterContacts()}
+            deleteContact={this.deleteContact}
+          />
+        </div>
       </>
     );
   }
