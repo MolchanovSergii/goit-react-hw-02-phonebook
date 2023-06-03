@@ -1,13 +1,13 @@
 import React from 'react';
 
-const ContactList = ({ dataUsers }) => {
+const ContactList = ({ dataUsers, deleteContact }) => {
   return (
     <>
       <ul>
         {dataUsers.map(dataUser => (
           <li key={dataUser.id}>
             {dataUser.name} : {dataUser.number}
-            <button>Delete</button>
+            <button onClick={() => deleteContact(dataUser.id)}>Delete</button>
           </li>
         ))}
       </ul>

@@ -11,7 +11,16 @@ class App extends Component {
   };
 
   formSubmitData = data => {
-    console.log(data);
+    const { contacts } = this.state;
+    const isDuplicateName = contacts.some(contacts =>
+      contacts.name.toLowerCase().includes(data.name.toLowerCase())
+    );
+
+    if (isDuplicateName) {
+      alert(`${data.name} is alredy to contacts`);
+      return;
+    }
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { ...data, id: nanoid() }],
     }));
@@ -31,6 +40,14 @@ class App extends Component {
     );
   };
 
+  deleteContact = deleteContactID => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(
+        contact => contact.id !== deleteContactID
+      ),
+    }));
+  };
+
   render() {
     return (
       <>
@@ -38,7 +55,10 @@ class App extends Component {
         <ContactForms onSubmit={this.formSubmitData} />
         <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilterData} />
-        <ContactList dataUsers={this.renderFilterContacts()} />
+        <ContactList
+          dataUsers={this.renderFilterContacts()}
+          deleteContact={this.deleteContact}
+        />
       </>
     );
   }
